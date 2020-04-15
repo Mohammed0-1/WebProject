@@ -1,9 +1,7 @@
 <?php
-if(isset($_POST['email'])){
-	echo $_POST['email'];
-header('location:HomePage-user.html');
+if(isset($_SESSION['email'])){
+header('location:HomePage-user.php');
 }else {
-echo "in else";
 	header('location:index.html');
 }
 ?>
