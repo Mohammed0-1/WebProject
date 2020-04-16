@@ -1,6 +1,5 @@
 <?php
 session_start();
-echo "string";
 if (!isset($_SESSION['email'])) {
   header('location:index.html');
 }
@@ -77,10 +76,15 @@ if (!isset($_SESSION['email'])) {
 
           <div class="col-lg-12 col-md-6 mb-4">
             <div class="card h-100">
-              <form>
+              <form method="post" action="insertItem.php">
                 <h4 class="card-title">
-                  <a href="#">Add Item</a>
+                  Add Item
                 </h4>
+                <?php
+					if(isset($_GET['error'])){
+						echo "<div class='alert alert-danger' role='alert'>" . $_GET['error'] . " !</div>";
+				}
+					?>
 
            <input class="ItemName" type="text" name="ItemName" placeholder=" Item name" required="required" >
 
@@ -90,12 +94,11 @@ if (!isset($_SESSION['email'])) {
            <input class="discription" type="text" name="discription" placeholder="Discription" required="required" >
             
             <h6> upload img for item</h6>
-            <form action="/action_page.php">
-              <input type="file" id="uploadfile" name="uploadfile">  </form>
-              
+            
+              <input type="file" id="uploadfile" name="uploadfile">                
               <div class="card-footer">
   					 <div>
-                <button id="addbtn" >Submit</button>
+                <button id="addbtn" type="submit" >Submit</button>
              </div>
              
              

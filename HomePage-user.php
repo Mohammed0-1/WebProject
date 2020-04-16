@@ -1,6 +1,5 @@
 <?php
 session_start();
-echo "string";
 if (!isset($_SESSION['email'])) {
   header('location:index.html');
 }

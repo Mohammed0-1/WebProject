@@ -37,6 +37,11 @@
 						SignUp 
 					</span>
 					<?php
+					if(isset($_GET['used'])){
+						echo "<div class='alert alert-danger' role='alert'>" . $_GET['used'] . " !</div>";
+				}
+					?>
+					<?php
 					if(isset($_GET['error'])){
 						echo "<div class='alert alert-danger' role='alert'>" . $_GET['error'] . " !</div>";
 				}
