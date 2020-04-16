@@ -32,11 +32,15 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
-				<form class="login100-form validate-form">
+				<form class="login100-form validate-form" method="post" action="signupcheck.php">
 					<span class="login100-form-title p-b-43">
 						SignUp 
 					</span>
-					
+					<?php
+					if(isset($_GET['error'])){
+						echo "<div class='alert alert-danger' role='alert'>" . $_GET['error'] . " !</div>";
+				}
+					?>
 
 					<div class="wrap-input100" >
 						<input class="input100" type="text" name="name">
@@ -62,13 +66,13 @@
 					<div class="wrap-input100 validate-input" data-validate="Password is required">
 						<input class="input100" type="password" name="pass">
 						<span class="focus-input100"></span>
-						<span class="label-input100">conferm Password</span>
+						<span class="label-input100">confirm Password</span>
 					</div>
 
 			
 
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn">
+						<button class="login100-form-btn" type="submit">
 							SignUp
 						</button>
 					</div>

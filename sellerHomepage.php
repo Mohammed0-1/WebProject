@@ -1,3 +1,10 @@
+<?php
+session_start();
+echo "string";
+if (!isset($_SESSION['email'])) {
+  header('location:index.html');
+}
+?>
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
@@ -50,7 +57,7 @@
 			<div class="header-right">
 				<div class="user-panel">
 					<a href="#" class="login">interests</a>
-					<a href="#" class="register">Logout</a>
+					<a href="Logout.php" class="register">Logout</a>
 				</div>
 			</div>
 		</nav>
