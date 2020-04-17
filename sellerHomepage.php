@@ -48,7 +48,9 @@ if (!isset($_SESSION['email'])) {
 		</a>
 		<nav class="header-nav">
 			<ul class="main-menu">
-				<li><a href="redirectToIndex.php" class="active">Home</a></li>
+				<li><a href="redirectToIndex.php"  class="active">Home</a></li>
+        <li><a href="#" class="active">Seller Page</a></li>
+
 				<!-- <li><a href="about-us.html">About</a></li> -->
 				<!-- <li><a href="#">Buy</a></li> -->
 				<!-- <li><a href="contact.html">Contact</a></li> -->
@@ -56,6 +58,7 @@ if (!isset($_SESSION['email'])) {
 			</ul>
 			<div class="header-right">
 				<div class="user-panel">
+
 					<a href="#" class="login">interests</a>
 					<a href="Logout.php" class="register">Logout</a>
 				</div>
@@ -68,7 +71,7 @@ if (!isset($_SESSION['email'])) {
 	<!-- <section class="hero-section set-bg" data-setbg="pic2.jpg"> -->
 		<div class="container">
       <p id="hellodear">Hello dear : Adidas seller</p>
-            <button class="site-btn">Add Item</button>
+            <button onclick="additem()" class="site-btn">Add Item</button>
 
 			<div class="hero-warp">
 				<form class="main-search-form">
@@ -78,7 +81,7 @@ if (!isset($_SESSION['email'])) {
 						</div>                                                           
 					</div>
 					<div class="search-input">
-						<input type="text" placeholder="Search for something to buy">
+						<input type="text" placeholder="Search for something ">
 						<button class="site-btn">Search</button>
 					</div>
 					<div class="all">
@@ -200,7 +203,12 @@ if (!isset($_SESSION['email'])) {
 		</div>
 		</div>
 
-		
+		 <script>
+        function additem() {
+        var sellerwindowinformation = window.open("AddItem.html", "input", "width=500px,height=740px");
+                              }
+                            
+          </script>
 
 	</section>
 	<!-- Hero Section end -->

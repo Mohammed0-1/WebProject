@@ -49,6 +49,8 @@ if (!isset($_SESSION['email'])) {
 		<nav class="header-nav">
 			<ul class="main-menu">
 				<li><a href="redirectToIndex.php" class="active">Home</a></li>
+        <li><a href="sellerHomepage.html" class="active">Seller page</a></li>
+
 				<!-- <li><a href="about-us.html">About</a></li> -->
 				<!-- <li><a href="#">Buy</a></li> -->
 				<!-- <li><a href="contact.html">Contact</a></li> -->
@@ -201,6 +203,7 @@ if (!isset($_SESSION['email'])) {
                               }
                             
           </script>
+          
 <div class="sellerwindowinformation"  > </div>
 		</div>
 		</div>
