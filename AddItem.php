@@ -81,6 +81,11 @@ if (!isset($_SESSION['email'])) {
                   Add Item
                 </h4>
                 <?php
+    if (isset($_GET['inserted'])) {
+        echo "<div class='alert alert-success' role='alert'>" . $_GET['inserted'] . " !</div>";
+    }
+    ?>
+                <?php
 					if(isset($_GET['error'])){
 						echo "<div class='alert alert-danger' role='alert'>" . $_GET['error'] . " !</div>";
 				}
@@ -89,7 +94,7 @@ if (!isset($_SESSION['email'])) {
            <input class="ItemName" type="text" name="ItemName" placeholder=" Item name" required="required" >
 
 
-          <input type="number" min="0" max="10000" step="1" name="Price" class="inputprice" required="required" placeholder="Price $ ">
+          <input type="number" min="0" max="1000" step="1" name="Price" class="inputprice" required="required" placeholder="Price $ ">
 
            <input class="discription" type="text" name="discription" placeholder="Discription" required="required" >
             
@@ -101,8 +106,8 @@ if (!isset($_SESSION['email'])) {
                 <button id="addbtn" type="submit" >Submit</button>
              </div>
              
-             
               </div>
+          </form>
             </div>
           </div>
 

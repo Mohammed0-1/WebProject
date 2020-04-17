@@ -2,12 +2,26 @@
 session_start();
 $email = $_SESSION['email'];
 echo "this is a test, we should insert product to database here";
-/*$con = mysqli_connect('localhost','root','','e-commerce');
-if(mysqli_errno()){
-	header('location:AddItem.php?error=can not connect to database');
+$con = mysqli_connect('localhost','root','','e-commerce');
+if(mysqli_errno($con)){
+	mysqli_close($con);
+	header('location:AddItem.php?error=could not connect to database');
+	exit();
 }
 if(isset($_POST['ItemName'])&&isset($_POST['Price'])&&isset($_POST['discription'])){
-$query = "INSERT INTO product values(/*'there should be ID here'*//*,'$_POST['ItemName']','$_POST['Price']','$_POST['discription']')";
-$result = mysqli_query($con,$query);
-}*/
+	$ItemName = $_POST['ItemName'];
+	$Price = $_POST['Price'];
+	$discription = $_POST['discription'];
+$insert = "INSERT INTO product (ProductName,Price,Discription,SellerEmail) VALUES('$ItemName','$Price','$discription','$email')";
+if(mysqli_query($con,$insert)){
+	mysqli_close($con);
+	header('location:AddItem.php?inserted= item inserted successfully');
+	exit();
+}else{
+	mysqli_close($con);
+	header('location:AddItem.php?error= could not insert');
+	exit();
+}
+mysqli_close($con);
+}
  ?>
