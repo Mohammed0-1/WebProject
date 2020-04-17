@@ -1,6 +1,5 @@
 <?php
 session_start();
-echo "string";
 if (!isset($_SESSION['email'])) {
   header('location:index.html');
 }
@@ -71,7 +70,7 @@ if (!isset($_SESSION['email'])) {
 	<!-- <section class="hero-section set-bg" data-setbg="pic2.jpg"> -->
 		<div class="container">
       <p id="hellodear">Hello dear : Adidas seller</p>
-            <button onclick="additem()" class="site-btn">Add Item</button>
+            <a href='AddItem.php'><button class="site-btn">Add Item</button></a>
 
 			<div class="hero-warp">
 				<form class="main-search-form">

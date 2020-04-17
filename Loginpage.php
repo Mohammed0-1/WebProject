@@ -37,10 +37,16 @@
 						Login Account
 					</span>
 					<?php
+					if(isset($_GET['errordb'])){
+						echo "<div class='alert alert-danger' role='alert'>" . $_GET['error'] . " !</div>";
+				}
+					?>
+					<?php
 					if(isset($_GET['error'])){
 						echo "<div class='alert alert-danger' role='alert'>" . $_GET['error'] . " !</div>";
 				}
 					?>
+
 					
 					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
 						<input class="input100" type="text" name="email">
