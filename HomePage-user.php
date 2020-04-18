@@ -68,7 +68,7 @@ if (!isset($_SESSION['email'])) {
 	<!-- Hero Section end -->
 	<!-- <section class="hero-section set-bg" data-setbg="pic2.jpg"> -->
 		<div class="container">
-      <p class="hellodear">Hello dear : " ... ... "</p>
+      <p class="hellodear">Hello dear : " <?php echo $_SESSION['name'];?>"</p>
 			<div class="hero-warp">
 				<form class="main-search-form">
 					<div class="search-type">
@@ -94,22 +94,24 @@ if (!isset($_SESSION['email'])) {
 
 			 <div class="row">
 
-          <div class="col-lg-4 col-md-6 mb-4">
+          <?php 
+            $itemname = "Adiddas tshirt";
+          echo'<div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
               <a href="#"><img class="card-img-top" src="img/adidastshirt.jpeg" alt=""></a>
               <div class="card-body">
                 <h4 class="card-title">
-                  <a href="#">Adidas tshirt</a>
+                  <a href="#" id="ItemName">'.$itemname.'</a>
                 </h4>
                 <h5>$24.99</h5>
                 <p class="discription"> All cotton , Black Logo at front!</p>
               </div>
               <div class="card-footer">
-                	<p><button>Add to Cart</button></p>
-  					 <p id="interests"><button onclick="interestpage()">interest</button></p>
+                  <p><button>Add to Cart</button></p>
+             <p id="interests"><form action="sellerinformation.php" method="get"><input type="hidden" name="itemname" value = "'.$itemname.'"><button>interest</button></form></p>
               </div>
             </div>
-          </div>
+          </div>';?>
 
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
@@ -123,7 +125,7 @@ if (!isset($_SESSION['email'])) {
               </div>
               <div class="card-footer">
                 	<p><button>Add to Cart</button></p>
-  					<p id="interests"><button onclick="interestpage()">interest</button></p>
+  					<p id="interests"><a href ="sellerinformation.php"><button style="color: white">interest</button></a></p>
               </div>
             </div>
           </div>
@@ -140,7 +142,7 @@ if (!isset($_SESSION['email'])) {
               </div>
                <div class="card-footer">
                 	<p><button>Add to Cart</button></p>
-  					<p id="interests"><button onclick="interestpage()">interest</button></p>
+  					<p id="interests"><a href ="sellerinformation.php"><button style="color: white">interest</button></a></p>
               </div>
             </div>
           </div>
@@ -157,7 +159,7 @@ if (!isset($_SESSION['email'])) {
               </div>
                <div class="card-footer">
                 	<p><button>Add to Cart</button></p>
-  					<p id="interests"><button onclick="interestpage()">interest</button></p>
+  					<p id="interests"><a href ="sellerinformation.php"><button style="color: white">interest</button></a></p>
               </div>
             </div>
           </div>
@@ -174,7 +176,7 @@ if (!isset($_SESSION['email'])) {
               </div>
                <div class="card-footer">
                 	<p><button>Add to Cart</button></p>
-  					<p id="interests"><button onclick="interestpage()">interest</button></p>
+  					<p id="interests"><a href ="sellerinformation.php"><button style="color: white">interest</button></a></p>
               </div>
             </div>
           </div>
@@ -191,14 +193,14 @@ if (!isset($_SESSION['email'])) {
               </div>
               <div class="card-footer">
                 	<p><button>Add to Cart</button></p>
-  					<p id="interests"><button onclick="interestpage()">interest</button></p>
+  					<p id="interests"><a href ="sellerinformation.php"><button style="color: white">interest</button></a></p>
               </div>
             </div>
           </div>
 			   
          <script>
-        function interestpage() {
-        var sellerwindowinformation = window.open("file:///Users/mohannedalhamidi/Desktop/test123/sellerinformation.html", "input", "width=500px,height=740px");
+        function getContent() {
+        this.setAttribute document.getElementById(elementname).innerHTML;
                               }
                             
           </script>
