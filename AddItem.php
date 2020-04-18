@@ -48,6 +48,8 @@ if (!isset($_SESSION['email'])) {
 		<nav class="header-nav">
 			<ul class="main-menu">
 				<li><a href="redirectToIndex.php" class="active">Home</a></li>
+				<li><a href="#" class="active">Add item</a></li>
+
 				<!-- <li><a href="about-us.html">About</a></li> -->
 				<!-- <li><a href="#">Buy</a></li> -->
 				<!-- <li><a href="contact.html">Contact</a></li> -->
@@ -71,12 +73,11 @@ if (!isset($_SESSION['email'])) {
 		<!-- Here Menu Items -->
 		
 
-
+		 <form method="post" action="insertItem.php">
 			 <div class="row">
 
           <div class="col-lg-12 col-md-6 mb-4">
             <div class="card h-100">
-              <form method="post" action="insertItem.php">
                 <h4 class="card-title">
                   Add Item
                 </h4>
@@ -86,16 +87,16 @@ if (!isset($_SESSION['email'])) {
 				}
 					?>
 
-           <input class="ItemName" type="text" name="ItemName" placeholder=" Item name" required="required" >
+           <input id="ItemName" type="text" name="ItemName" placeholder=" Item name" required="required" style="text-align: center" >
 
 
-          <input type="number" min="0" max="10000" step="1" name="Price" class="inputprice" required="required" placeholder="Price $ ">
+          <input type="number" min="0" max="10000" step="1" name="Price" id="inputprice" required="required" placeholder="Price $ " style="text-align: center " size="6" >
 
-           <input class="discription" type="text" name="discription" placeholder="Discription" required="required" >
+           <input id="discription" type="text" name="discription" placeholder="Discription" required="required" style="text-align: center" >
             
-            <h6> upload img for item</h6>
-            
-              <input type="file" id="uploadfile" name="uploadfile">                
+            <h6 style="color: red"> Please enter img URL</h6>
+           
+           <input id="uploadimglink"  type="url" name="uploadimglink" placeholder="URL" required="required" style="text-align: center" >
               <div class="card-footer">
   					 <div>
                 <button id="addbtn" type="submit" >Submit</button>
@@ -105,11 +106,7 @@ if (!isset($_SESSION['email'])) {
               </div>
             </div>
           </div>
-
-          
-
-		
-
+          </form>
 	</section>
 	<!-- Hero Section end -->
 	<!-- <section class="hero-section set-bg" data-setbg="pic2.jpg"> -->

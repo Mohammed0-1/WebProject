@@ -1529,3 +1529,41 @@ Responsive
 		padding-bottom ;
 		font-size: 22px; 
 	}
+	#inputprice{
+	width: 93px;
+	height: 30px;
+	border-radius: 11spx ;
+	margin:5px;
+	border-radius: 3px ;
+
+	/*border: solid red 1px ;*/
+	}
+	#ItemName{
+	width: 100%;
+	height: 40px;
+	border-radius: 5px ;
+	margin-top: 8px ; 
+	margin-bottom: 10px;
+
+
+	/*border: solid red 1px ;*/
+	}
+	#discription{
+	width: 100%;
+	margin-top: 5px ;
+	margin-bottom: 20px;
+	text-decoration-line: ;
+
+	/*height: 85px;*/
+	/*border: solid red 1px ;*/
+	padding-bottom: 36px;
+	border-radius: 5px ;
+
+	}
+	#uploadimglink{
+	width: 100%;
+	height: 40px;
+	border-radius: 5px ;
+	margin-top: 8px ; 
+	margin-bottom: 10px;
+	}
