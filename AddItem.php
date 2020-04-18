@@ -101,7 +101,7 @@ if (!isset($_SESSION['email'])) {
             
             <h6 style="color: red"> Please enter img URL</h6>
            
-           <input id="uploadimglink"  type="url" name="uploadimglink" placeholder="URL" required="required" style="text-align: center" >
+           <input id="uploadimglink"  type="text" name="uploadimglink" placeholder="URL" required="required" style="text-align: center" >
               <div class="card-footer">
   					 <div>
                 <button id="addbtn" type="submit" >Submit</button>

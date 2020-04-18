@@ -95,115 +95,39 @@ if (!isset($_SESSION['email'])) {
 			 <div class="row">
 
           <?php 
-            $itemname = "Adiddas tshirt";
-          echo'<div class="col-lg-4 col-md-6 mb-4">
+          $con = mysqli_connect('localhost','root','','e-commerce');
+          if(mysqli_errno($con)){
+            header('location:HomePage-user.php?errordb=can not connect to database');
+          } 
+          $query = "SELECT * FROM product ";
+          $result = mysqli_query($con,$query);
+            for ($i =0; $i < min(6, mysqli_num_rows($result));$i++){
+              $row = mysqli_fetch_row($result);
+              $itemID = $row[0];
+              $itemname = $row[1];
+              $itemPrice = $row[2];
+              $itemDiscription = $row[3];
+              $itempic = $row[4];
+              $itemSeller = $row[5];
+              echo'<div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="img/adidastshirt.jpeg" alt=""></a>
+              <a href="#"><img class="card-img-top" src="'.$itempic.'" alt=""></a>
               <div class="card-body">
                 <h4 class="card-title">
                   <a href="#" id="ItemName">'.$itemname.'</a>
                 </h4>
-                <h5>$24.99</h5>
-                <p class="discription"> All cotton , Black Logo at front!</p>
+                <h5>$'.$itemPrice.'</h5>
+                <p class="discription">'.$itemDiscription.'</p>
               </div>
               <div class="card-footer">
                   <p><button>Add to Cart</button></p>
-             <p id="interests"><form action="sellerinformation.php" method="get"><input type="hidden" name="itemname" value = "'.$itemname.'"><button>interest</button></form></p>
+             <p id="interests"><form action="sellerinformation.php" method="get"><input type="hidden" name="itemseller" value = "'.$itemSeller.'"><button>interest</button></form></p>
               </div>
             </div>
-          </div>';?>
-
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="img/pumashoes.jpeg" alt=""></a>
-              <div class="card-body">
-                <h4 class="card-title">
-                  <a href="#">Puma shoes</a>
-                </h4>
-                <h5>$34.99</h5>
-                <p class="discription">Extractor Walking Shoes For Men  (Grey) </p>
-              </div>
-              <div class="card-footer">
-                	<p><button>Add to Cart</button></p>
-  					<p id="interests"><a href ="sellerinformation.php"><button style="color: white">interest</button></a></p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="img/nbshort.jpg" alt=""></a>
-              <div class="card-body">
-                <h4 class="card-title">
-                  <a href="#">NB short</a>
-                </h4>
-                <h5>$16.99</h5>
-                <p class="discription">men's lounge short from New Balance , black !</p>
-              </div>
-               <div class="card-footer">
-                	<p><button>Add to Cart</button></p>
-  					<p id="interests"><a href ="sellerinformation.php"><button style="color: white">interest</button></a></p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="img/niketshort.jpg" alt=""></a>
-              <div class="card-body">
-                <h4 class="card-title">
-                  <a href="#">Nike tshirt</a>
-                </h4>
-                <h5>$19.99</h5>
-                <p class="discription"> Nike Mens AIR MAX , blue</p>
-              </div>
-               <div class="card-footer">
-                	<p><button>Add to Cart</button></p>
-  					<p id="interests"><a href ="sellerinformation.php"><button style="color: white">interest</button></a></p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="img/adidasshooes.jpg" alt=""></a>
-              <div class="card-body">
-                <h4 class="card-title">
-                  <a href="#">Adidas Shoes</a>
-                </h4>
-                <h5>$44.99</h5>
-                <p class="discription"> est adidas running shoes – 2019 </p>
-              </div>
-               <div class="card-footer">
-                	<p><button>Add to Cart</button></p>
-  					<p id="interests"><a href ="sellerinformation.php"><button style="color: white">interest</button></a></p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="(from seller )" alt=""></a>
-              <div class="card-body">
-                <h4 class="card-title">
-                  <a href="#">Item Six</a>
-                </h4>
-                <h5>$24.99</h5>
-                <p class="discription">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!</p>
-              </div>
-              <div class="card-footer">
-                	<p><button>Add to Cart</button></p>
-  					<p id="interests"><a href ="sellerinformation.php"><button style="color: white">interest</button></a></p>
-              </div>
-            </div>
-          </div>
-			   
-         <script>
-        function getContent() {
-        this.setAttribute document.getElementById(elementname).innerHTML;
-                              }
-                            
-          </script>
+          </div>';
+        }
+        mysqli_close($con);
+              ;?>
           
 <div class="sellerwindowinformation"  > </div>
 		</div>

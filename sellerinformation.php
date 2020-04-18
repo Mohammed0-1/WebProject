@@ -69,12 +69,22 @@ if (!isset($_SESSION['email'])) {
               
               <div class="card-body">
             <h3 class="card_title" style="color: blue"> <center> Seller Contact information </center></h3>
-
-                  <h3 id="seller_name">Seller Name : </h3>
-                  <h3 id="seller_mail">Seller Email :</h3>
-                  <h3 id="seller_num">Seller Number :</h3>
-                  
-  					 <button onclick="chat()" class="chat_btn"  >Chat!</button>
+            	<?php 
+            	$con = mysqli_connect('localhost','root','','e-commerce');
+				if(mysqli_errno($con)){
+				header('location:sellerinfortmation.php');
+				}
+					$selleremail = $_GET['itemseller'];
+					$query = "SELECT * FROM user WHERE Email='$selleremail'";
+					$result = mysqli_query($con,$query);
+					$row = mysqli_fetch_row($result);
+					mysqli_close($con);
+                  echo'<h3 id="seller_name">Seller Name : '.$row[0].'</h3>
+                       <h3 id="seller_mail">Seller Email : '.$row[1].'</h3>
+                       <h3 id="seller_num">Seller Number :</h3>
+                                    
+                     <button onclick="chat()" class="chat_btn"  >Chat!</button>';
+  					 ?>
               </div>
             </div>
           </div>

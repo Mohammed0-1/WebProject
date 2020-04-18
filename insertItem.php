@@ -12,7 +12,8 @@ if(isset($_POST['ItemName'])&&isset($_POST['Price'])&&isset($_POST['discription'
 	$ItemName = $_POST['ItemName'];
 	$Price = $_POST['Price'];
 	$discription = $_POST['discription'];
-$insert = "INSERT INTO product (ProductName,Price,Discription,SellerEmail) VALUES('$ItemName','$Price','$discription','$email')";
+	$pic = $_POST['uploadimglink'];
+$insert = "INSERT INTO product (ProductName,Price,Discription,Picture,SellerEmail) VALUES('$ItemName','$Price','$discription','$pic','$email')";
 if(mysqli_query($con,$insert)){
 	mysqli_close($con);
 	header('location:AddItem.php?inserted= item inserted successfully');
