@@ -30,7 +30,16 @@ if (!isset($_SESSION['email'])) {
 	<link rel="stylesheet" href="css/menustyle.css"/>
 	<link rel="stylesheet" href="css/seller information.css"/>
 
-
+<script type="text/javascript">
+  
+  function remove(id){
+   var action = window.confirm("Are you sure you want to delete the selected Item?");
+   if(action){
+    var item = id;
+    window.location='delete.php?PID='+item;
+   }
+  }
+</script>
 
 
 </head>
@@ -48,7 +57,6 @@ if (!isset($_SESSION['email'])) {
 		<nav class="header-nav">
 			<ul class="main-menu">
 				<li><a href="redirectToIndex.php"  class="active">Home</a></li>
-        <li><a href="#" class="active">Seller Page</a></li>
 
 				<!-- <li><a href="about-us.html">About</a></li> -->
 				<!-- <li><a href="#">Buy</a></li> -->
@@ -58,7 +66,6 @@ if (!isset($_SESSION['email'])) {
 			<div class="header-right">
 				<div class="user-panel">
 
-					<a href="#" class="login">interests</a>
 					<a href="Logout.php" class="register">Logout</a>
 				</div>
 			</div>
@@ -69,7 +76,7 @@ if (!isset($_SESSION['email'])) {
 	<!-- Hero Section end -->
 	<!-- <section class="hero-section set-bg" data-setbg="pic2.jpg"> -->
 		<div class="container">
-      <p id="hellodear">Hello dear : Adidas seller</p>
+      <p class="hellodear">Hello: <?php echo $_SESSION['name'];?></p>
             <a href='AddItem.php'><button class="site-btn">Add Item</button></a>
 
 			<div class="hero-warp">
@@ -80,8 +87,8 @@ if (!isset($_SESSION['email'])) {
 						</div>                                                           
 					</div>
 					<div class="search-input">
-						<input type="text" placeholder="Search for something ">
-						<button class="site-btn">Search</button>
+						<!-- <input type="text" placeholder="Search for something ">
+						<button class="site-btn">Search</button> -->
 					</div>
 					<div class="all">
 
@@ -93,7 +100,18 @@ if (!isset($_SESSION['email'])) {
 
 		<!-- Here Menu Items -->
 		
+        <?php
+    if (isset($_GET['updated'])) {
+        echo "<div class='alert alert-success' role='alert'>" . $_GET['updated'] . " !</div>";
+    }
+    if (isset($_GET['deleted'])) {
+        echo "<div class='alert alert-success' role='alert'>" . $_GET['deleted'] . " !</div>";
+    }
+    if (isset($_GET['derror'])) {
+        echo "<div class='alert alert-danger' role='alert'>" . $_GET['derror'] . " !</div>";
+    }
 
+    ?>
 
 			 <div class="row">
               <?php 
@@ -114,7 +132,7 @@ if (!isset($_SESSION['email'])) {
               $itemSeller = $row[5];
               echo'<div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
-              <a href="#"><img class="card-img-top" src="'.$itempic.'" alt=""></a>
+              <a href="#"><img class="card-img-top" style="max-width:100% ; hight:200px" src="'.$itempic.'" alt=""></a>
               <div class="card-body">
                 <h4 class="card-title">
                   <a href="#" id="ItemName">'.$itemname.'</a>
@@ -122,9 +140,10 @@ if (!isset($_SESSION['email'])) {
                 <h5>$'.$itemPrice.'</h5>
                 <p class="discription">'.$itemDiscription.'</p>
               </div>
-              <div class="card-footer">
-                  <p><button>Edit Item</button></p>
-            <p id="interests"><button>Delete Item</button></p>
+              <div class="card-footer"><form action="EditItem.php" method="get">
+              <input type="hidden" name="PID" value="'.$itemID.'">
+                  <p><button>Edit Item</button></p></form>
+            <p id="interests"><button onclick="remove('.$itemID.')">Delete Item</button></p>
               </div>
             </div>
           </div>';

@@ -67,22 +67,22 @@ if (!isset($_SESSION['email'])) {
 	<!-- Hero Section end -->
 	<!-- <section class="hero-section set-bg" data-setbg="pic2.jpg"> -->
 		
-     <p class="hellodear">Hello: " <?php echo $_SESSION['name'];?>"</p>
+      <p class="hellodear">Hello: " <?php echo $_SESSION['name'];?>"</p>
 
 		<!-- Here Menu Items -->
 		
 
-		 <form method="post" action="insertItem.php">
+		 <form method="post" action="EditItemprc.php">
 			 <div class="row">
 
           <div class="col-lg-12 col-md-6 mb-4">
             <div class="card h-100">
                 <h4 class="card-title">
-                  Add Item
+                  Edit Item
                 </h4>
                 <?php
-    if (isset($_GET['inserted'])) {
-        echo "<div class='alert alert-success' role='alert'>" . $_GET['inserted'] . " !</div>";
+    if (isset($_GET['edited'])) {
+        echo "<div class='alert alert-success' role='alert'>" . $_GET['edited'] . " !</div>";
     }
     ?>
                 <?php
@@ -90,27 +90,52 @@ if (!isset($_SESSION['email'])) {
 						echo "<div class='alert alert-danger' role='alert'>" . $_GET['error'] . " !</div>";
 				}
 					?>
+					<?php
+					if(isset($_GET['PID'])){
+						$PID = $_GET['PID'];
+					$con = mysqli_connect('localhost','root','','e-commerce');
+          if(mysqli_errno($con)){
+            header('location:EditItem.php?errordb=can not connect to database');
+          } 
 
-           <input id="ItemName" type="text" name="ItemName" placeholder=" Item name" required="required" style="text-align: center" >
+          $query = "SELECT * FROM product WHERE ProductID = '$PID'";
+          $result = mysqli_query($con,$query);
+          $row = mysqli_fetch_row($result);
+              $itemID = $row[0];
+              $itemname = $row[1];
+              $itemPrice = $row[2];
+              $itemDiscription = $row[3];
+              $itempic = $row[4];
+              $itemSeller = $row[5];
+
+              echo'
+              <input value="'.$PID.'"type="hidden" name="PID">
+           <input value="'.$itemname.'" id="ItemName" type="text" name="ItemName" placeholder=" Item name" required="required" style="text-align: center" >
 
 
-          <input type="number" min="0" max="1000" step="1" name="Price" class="inputprice" required="required" placeholder="Price $ ">
+          <input value= "'.$itemPrice.'" type="number" min="0" max="1000" step="1" name="Price" class="inputprice" required="required" placeholder="Price $ ">
 
-           <input id="discription" type="text" name="discription" placeholder="Discription" required="required" style="text-align: center" >
+           <textarea rows="5" maxlength="200" id="discription" type="text" name="discription" placeholder="Discription" required="required" style="text-align: center">'.$itemDiscription.'</textarea>
             
             <h6 style="color: red"> Please enter img URL</h6>
            
-           <input id="uploadimglink"  type="text" name="uploadimglink" placeholder="URL" required="required" style="text-align: center" >
+           <input value ="'.$itempic.'"id="uploadimglink"  type="text" name="uploadimglink" placeholder="URL" required="required" style="text-align: center" >
               <div class="card-footer">
   					 <div>
                 <button id="addbtn" type="submit" >Submit</button>
              </div>
              
-              </div>
+              </div>';
+					}else {
+						header('location:sellerHomepage.php?updated= The Item is Updated successfully');
+						exit();
+					}
+					?>
+
           </form>
             </div>
           </div>
-          </form>
+          
 	</section>
 	<!-- Hero Section end -->
 	<!-- <section class="hero-section set-bg" data-setbg="pic2.jpg"> -->

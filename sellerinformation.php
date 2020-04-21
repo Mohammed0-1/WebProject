@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['email'])) {
-  header('location:index.html');
+  header('location:index.php');
 }
 ?>
 <!DOCTYPE html>
@@ -47,7 +47,7 @@ if (!isset($_SESSION['email'])) {
 		</a>
 		<nav class="header-nav">
 			<ul class="main-menu">
-				<li><a href="redirectToIndex.php" class="active">Seller info</a></li>
+				<li><a href="redirectToIndex.php" class="active">Home</a></li>
 			</ul>
 			<div class="header-right">
 				<div class="user-panel">
@@ -81,9 +81,8 @@ if (!isset($_SESSION['email'])) {
 					mysqli_close($con);
                   echo'<h3 id="seller_name">Seller Name : '.$row[0].'</h3>
                        <h3 id="seller_mail">Seller Email : '.$row[1].'</h3>
-                       <h3 id="seller_num">Seller Number :</h3>
                                     
-                     <button onclick="chat()" class="chat_btn"  >Chat!</button>';
+                     <button onclick="chat(\''.$row[0].'\',\''.$row[1].'\')" class="chat_btn"  >Chat!</button>';
   					 ?>
               </div>
             </div>
@@ -91,8 +90,8 @@ if (!isset($_SESSION['email'])) {
 
           
          <script>
-        function chat() {
-        var chatwindow = window.open("chat.html", "input", "width=560px,height=540px");
+        function chat(name,email) {
+        var chatwindow = window.open("chat.php?name="+name+"&email="+email, "input", "width=560px,height=540px");
                               }
                             
           </script>
